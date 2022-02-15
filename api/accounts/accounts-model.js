@@ -15,12 +15,12 @@ const create = async (account) => {
   const [id] = await db("accounts").insert(account, ["id"]);
   return getById(id);
 
-  // if not async we will get only the id of the created post
+  // if not async we will get only the id of the created post not the whole req body
   //db("accounts").insert(account)
 };
 
 const updateById = async (id, account) => {
-  // DO YOUR MAGIC
+  // UPDATE accounts set name="foo" , budget = 2000 where id =1;
   await db("accounts").where("id", id).update(account);
   return getById(id);
 };
