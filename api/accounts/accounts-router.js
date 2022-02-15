@@ -22,7 +22,7 @@ router.post(
   middleware.checkAccountNameUnique,
   (req, res, next) => {
     try {
-      res.json("post accounts ");
+      res.json("post account");
     } catch (err) {
       next(err);
     }
