@@ -10,16 +10,24 @@ const getById = (id) => {
   return db("accounts").where("id", id).first();
 };
 
-const create = (account) => {
-  // DO YOUR MAGIC
+const create = async (account) => {
+  //insert into account (name , budget ) values ('foo',1000;)
+  const [id] = await db("accounts").insert(account, ["id"]);
+  return getById(id);
+
+  // if not async we will get only the id of the created post
+  //db("accounts").insert(account)
 };
 
-const updateById = (id, account) => {
+const updateById = async (id, account) => {
   // DO YOUR MAGIC
+  await db("accounts").where("id", id).update(account);
+  return getById(id);
 };
 
 const deleteById = (id) => {
-  // DO YOUR MAGIC
+  // DELETE from accounts where id=1;
+  return db("accounts").where("id", id).del();
 };
 
 module.exports = {
